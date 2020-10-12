@@ -28,6 +28,16 @@ public class Customer {
         this.username = username;
     }
 
+    public Customer () {
+        this.firstName = "";
+        this.lastName = "";
+        this.address = "";
+        this.cardNumber = "";
+        this.pin = 0;
+        this.username = "";
+        this.password = "";
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -81,7 +91,11 @@ public class Customer {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        if (isValidPassword(password)){
+            this.password = password;
+        } else {
+            this.password = "DefaultPassword@20";
+        }
     }
 
     @Override
@@ -92,9 +106,41 @@ public class Customer {
                 ", cardNumber='" + cardNumber + '\'' +
                 ", pin=" + pin +
                 ", username='" + username + '\'' +
-                ", password='" + generatePassword() + '\'' +
+                ", password='" + getPassword() + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    private boolean isValidPassword(String password) {
+        this.password = password;
+        String sambols = "@#$%";
+
+        boolean numeric = false;
+        boolean lower = false;
+        boolean upper = false;
+        boolean sambol = false;
+        boolean status = false;
+
+        if (password.length() >= 8 && password.length() <= 20) {
+            for (int i = 0; i < password.length(); i++) {
+                if (Character.isDigit(password.charAt(i))) {
+                    numeric = true;
+                } if (Character.isUpperCase(password.charAt(i))) {
+                    upper = true;
+                } if (Character.isLowerCase(password.charAt(i))) {
+                    lower = true;
+                }
+                for (int j = 0; j < sambols.length(); j++) {
+                    if (password.charAt(i) == sambols.charAt(j)) {
+                        sambol = true;
+                    }
+                }
+            }
+
+        }
+        if (upper && lower && sambol && numeric) {status = true;}
+
+        return status;
     }
 
     private String generatePassword() {

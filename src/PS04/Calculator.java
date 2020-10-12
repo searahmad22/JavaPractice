@@ -1,4 +1,4 @@
-//package PS04;
+package PS04;
 
 import java.util.Scanner;
 
@@ -31,8 +31,18 @@ public class Calculator {
                     System.out.println("Error");
                 }else {
                     result = division(num1, num2);
+                    System.out.println(result);
                 }
                 break;
+            case "%":
+                if (num2 == 0){
+                    System.out.println("Error");
+                }else {
+                    result = mode(num1, num2);
+                    System.out.println(result);
+                }
+                break;
+
             default:
         }
 
@@ -54,4 +64,6 @@ public class Calculator {
     private static int division(int dividend, int divisor) {
         return dividend / divisor;
     }
+
+    private static int mode(int number1, int number2) {return number1 % number2;}
 }

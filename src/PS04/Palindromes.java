@@ -1,4 +1,4 @@
-//package PS04;
+package PS04;//package PS04;
 
 import java.util.Scanner;
 

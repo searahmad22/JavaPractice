@@ -1,4 +1,4 @@
-//package PS03;
+package PS03;//package PS03;
 
 public class NumbersTriangle {
     public static void main(String args[]) {
