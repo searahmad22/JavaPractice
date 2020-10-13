@@ -13,7 +13,21 @@ public class RoundSum {
         System.out.println("Rounded sum is " + roundSum(num1, num2, num3));
     }
 
+    // This is the easier way to do roundSum, I found it out then I implemented this one, before I used dummyRoundSum.
     private static int roundSum(int number1, int number2, int number3) {
+        int num = (number1 + number2 + number3);
+        int operation = num % 10;
+
+        if (operation >= 5) {
+            num = (num - operation) + 10;
+        } else {
+            num = (num - operation);
+        }
+
+        return num;
+    }
+
+    private static int dummyRoundSum(int number1, int number2, int number3) {
         int result = number1 + number2 + number3;
         String num = Integer.toString(result);
         String sum = "";
